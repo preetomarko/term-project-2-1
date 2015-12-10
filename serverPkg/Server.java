@@ -1,3 +1,5 @@
+// created and modified by ARKO on 10 december, at 2:40 pm
+
 package serverPkg;
 
 import java.net.ServerSocket;
@@ -53,9 +55,38 @@ class ServerThread implements Runnable {
 		// now connection accepted
         c=(clientInfo) nc.read();
 		System.out.println("read from the client");
+        System.out.println("from "+c.getFrom());
+        System.out.println("to "+c.getTo());
+        System.out.println("date "+c.getD());
+        System.out.println("is AC: "+c.isAc());
+        System.out.println("is Non-AC: "+c.isNonAC());
+        // successful read from the client
 
-        // SEEK AVAILABLE SEATS FROM THE DATABASE
+        // HERE GOES YOUR CODE, PIAS. SEEK AVAILABLE SEATS FROM THE DATABASE
 
 	}
 }
 
+class newThread implements Runnable
+{
+    Thread t;
+    //serverController sControl;
+    newThread()
+    {
+        t=new Thread(this);
+        //sControl=sc;
+        //if(sc==null) System.out.println("sc is null");
+        t.start();
+    }
+    public void run()
+    {
+        new Server();
+    }
+}
+
+class serverMain
+{
+    public static void main(String[] args) {
+        new newThread();
+    }
+}

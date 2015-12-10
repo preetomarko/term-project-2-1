@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// modified by ARKO on 10 december, at 2:40 pm
+
 package termproject;
 
 import javafx.application.Application;
@@ -14,11 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import serverPkg.*;
 
-/**
- *
- * @author USER
- */
 
+/*
 class newThread implements Runnable
 {
     Thread t;
@@ -35,6 +29,7 @@ class newThread implements Runnable
         new Server();
     }
 }
+*/
 
 public class TermProjectMain extends Application {
     
@@ -55,15 +50,22 @@ public class TermProjectMain extends Application {
         hc.init();
         hc.setMain(this);
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         stg=stage;
-        new newThread();
+        //new newThread();
+    }
+
+    @Override
+    public void stop(){     // for exiting the client side program when the cross button on the window is pressed
+        System.exit(0);
     }
 
 
-    public void personalForm() throws Exception{
+    public void personalForm() throws Exception{   // ARKO: I did not check this function
+
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         FXMLLoader loader= new FXMLLoader();
         loader.setLocation(getClass().getResource("PersonalForm.fxml"));
@@ -79,7 +81,8 @@ public class TermProjectMain extends Application {
         stg.show();
     }
 
-    public void showTicket() throws Exception {
+    public void showTicket() throws Exception {  // ARKO: I did not check this function
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("TicketViewController.fxml"));
         Parent root = loader.load();

@@ -1,11 +1,11 @@
+// created and modified by ARKO on 9 december, at 1:30 am
+
 package clientInfoPkg;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Created by USER on 12/8/2015.
- */
+
 public class clientInfo implements Serializable {
     String from;
     String to;

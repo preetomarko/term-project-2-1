@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// created and modified by ARKO on 10 december, at 2:40 pm
+
 package termproject;
 
 import java.time.LocalDate;
@@ -115,12 +112,20 @@ public class homepageController {
 
     @FXML
     void ACradioButtonClick(ActionEvent event) {
-        c.setAC(true);
+        /*
+        if(!c.isAc())c.setAC(true);
+        else c.setAC(false);
+        */
+        //c.setAC(ACradioButton.isSelected());
     }
 
     @FXML
     void nonACradioButtonClick(ActionEvent event) {
-        c.setNonAC(true);
+        /*
+        if(!c.isNonAC())c.setNonAC(true);
+        else c.setAC(false);
+        */
+        //c.setNonAC(nonACradioButton.isSelected());
     }
 
 
@@ -163,7 +168,7 @@ public class homepageController {
     void datePickAction(ActionEvent event) {
         System.out.println(datePick.getValue());   // type: LocalDate
         //System.out.println(datePick.getValue().getClass());
-        c.setDate(datePick.getValue());
+
 
 
     }
@@ -177,11 +182,15 @@ public class homepageController {
     @FXML
     void searchTktButton(ActionEvent event) {
         // send a request to server for searching a ticket from database
+        c.setDate(datePick.getValue());
+        c.setAC(ACradioButton.isSelected());
+        c.setNonAC(nonACradioButton.isSelected());
         if( allOptionsFilledUp() ){
             try {
                 String serverAddress="127.0.0.1";
                 int serverPort=55555;
                 NetworkUtil nc = new NetworkUtil(serverAddress,serverPort);
+
                 nc.write(c);
 
             } catch(Exception e) {
@@ -332,7 +341,7 @@ public class homepageController {
         fromComboBox.setVisibleRowCount(4);
         toComboBox.setVisibleRowCount(4);
 
-        // the code fragment below ensures that no day before today is selected from the datePicker by disabling the selecting option for those days
+        // the code fragment below ensures that no day before today is selected from the datePicker by disabling the selecting option for those days and marking them in pink color
         final Callback<DatePicker, DateCell> dayCellFactory =
                 new Callback<DatePicker, DateCell>() {
                     @Override
@@ -351,6 +360,7 @@ public class homepageController {
                     }
                 };
         datePick.setDayCellFactory(dayCellFactory);
+        datePick.setEditable(false);
 
     }
 

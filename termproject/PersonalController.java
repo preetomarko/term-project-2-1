@@ -1,4 +1,7 @@
+// not modified by ARKO. have to replace the TextField by Labels and use setVisible() method
+
 package termproject;
+
 
 /**
  * Created by HP on 11/29/2015.

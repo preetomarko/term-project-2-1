@@ -1,3 +1,5 @@
+// not modified by ARKO. see the comment on line 26
+
 package termproject;
 
 /**
@@ -21,7 +23,7 @@ public class PersonalInfo {
         this.age = text4;
     }
 
-    PersonalInfo p;
+    PersonalInfo p;   // ARKO: I have confusion whether this will work properly
     public String getName(){
         return name;
     }
